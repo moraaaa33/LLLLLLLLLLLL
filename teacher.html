@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المعلم - الإدارة</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+
+    <!-- نظام الحماية بكلمة السر قبل تحميل الصفحة -->
+    <script>
+        // يمكنك تغيير كلمة السر هذه إلى أي رقم أو كلمة سر تفضلها
+        const ADMIN_PASSWORD = "1234"; 
+
+        function checkAdminAccess() {
+            let password = prompt("⚠️ هذه منطقة محمصة خاصة بالمعلم. يرجى إدخال كلمة السر:");
+            
+            if (password !== ADMIN_PASSWORD) {
+                alert("❌ كلمة السر غير صحيحة! سيتم تحويلك لصفحة الطلاب.");
+                window.location.href = "index.html"; // إعادة توجيه الطالب للخارج فوراً
+            } else {
+                alert("✅ تم التحقق بنجاح، أهلاً بك يا استاذنا.");
+            }
+        }
+
+        // تشغيل التحقق فور فتح الصفحة
+        window.onload = checkAdminAccess;
+    </script>
+</head>
+<body class="bg-slate-100 min-h-screen p-6">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
+        
+        <!-- Header -->
+        <div class="flex justify-between items-center border-b pb-4 mb-6">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">لوحة تحكم المعلم (الأدمن) ⚙️</h1>
+                <p class="text-sm text-slate-500 mt-1">إدارة الأسئلة، ومتابعة درجات الـ 200 طالب</p>
+            </div>
+            <a href="index.html" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-4 py-2 rounded-lg text-sm font-semibold transition">
+                العودة لواجهة الطلاب
+            </a>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- كارت إضافة سؤال -->
+            <div class="bg-indigo-50 border border-indigo-100 p-5 rounded-xl">
+                <h2 class="text-lg font-bold text-indigo-900 mb-3">إضافة امتحان أو سؤال جديد</h2>
+                <p class="text-sm text-indigo-600 mb-4">قم بإضافة أسئلة الاختيار من متعدد لتظهر للطلاب فوراً.</p>
+                <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-4 py-2 rounded-lg transition shadow">
+                    إضافة سؤال جديد
+                </button>
+            </div>
+
+            <!-- كارت متابعة النتائج -->
+            <div class="bg-emerald-50 border border-emerald-100 p-5 rounded-xl">
+                <h2 class="text-lg font-bold text-emerald-900 mb-3">متابعة درجات الطلاب (الواتساب)</h2>
+                <p class="text-sm text-emerald-600 mb-4">عرض سجل الطلاب الذين أتموا الاختبار ونتائجهم المرسلة لأولياء الأمور.</p>
+                <button class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded-lg transition shadow">
+                    عرض سجل الدرجات
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
